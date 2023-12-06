@@ -1,0 +1,41 @@
+﻿@using WebColegioPagos.Models.Data;
+@model EditPago
+@{
+    ViewData["Title"] = "Pagos Pendientes";
+}
+
+<script>
+    function pagar() {
+        var act = document.getElementById('cuotas').value;
+        window.location.href = '@Url.Action("Pagar", "Pago")?id=' + @Model.Pago.Estudiante + '&cantidad=' + act;
+    }
+</script>
+
+<h1 class="text-light">@ViewData["Title"]</h1>
+<div class="container">
+    <div>
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Cuota Del sistema
+                <span class="badge bg-primary rounded-pill">@Model.Global.Glo_valor</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Cuota del estudiante
+                <span class="badge bg-primary rounded-pill">@Model.Pago.Pag_cuota</span>
+            </li>          
+        </ul>
+    </div>
+    <div>
+        <div class="card" style="width: 18rem;">
+            <img src="/img/Tarjetas-2.jpg" class="card-img-top" alt="Tarjetas de crédito">
+            <div class="card-body">
+                <h5 class="card-title">Valor a pagar</h5>
+                <label>Ingrese las cuotas a pagar</label>
+                <input type="number"  min="0" id="cuotas"/>
+                <a onclick="pagar()" class="btn btn-success">Pagar</a>
+                <a asp-action="Inpago" class="btn btn-primary">Regresar</a>
+            </div>
+        </div>
+    </div>
+</div>
+

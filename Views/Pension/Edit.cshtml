@@ -1,0 +1,26 @@
+﻿@model Pension
+@{
+    ViewData["Title"] = "Modificación de Pensión";
+}
+<h1 class="text-light">@ViewData["Title"]</h1>
+<form method="post">
+    <div class="mb-3">
+        <label class="text-light">Nombre de la Pensión Actual</label>
+        <input class="form-control" value="@Model.Pen_nombre" disabled>
+    </div>
+    <div class="mb-3">
+        <label class="text-light">Nombre de la Nueva Pensión</label>
+        <input class="form-control" asp-for="Pen_nombre">
+    </div>
+    <div class="row col 6">
+        <div class="col-6 col-md-6">
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </div>
+        <div class="col-6 col-md-6">
+            <a asp-action="Index" class="btn btn-primary">Regresar</a>
+        </div>
+    </div>
+</form>
+
+
+

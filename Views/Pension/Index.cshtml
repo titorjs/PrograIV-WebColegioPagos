@@ -1,0 +1,53 @@
+﻿@model List<Pension>
+@{
+    ViewData["Title"] = "Lista de Pensiones";
+}
+
+<script>
+    function buscarPorId() {
+        var id = document.getElementById('id').value;
+        window.location.href = '@Url.Action("buscarPorId", "Pension")?id=' + id;
+    }
+</script>
+
+<h1 class="text-light">@ViewData["Title"]</h1>
+<button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Create", "Pension")'">Agregar Pension</button>
+<button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Index", "Pension")'">Mostrar Todos</button>
+<h4 class="text-light">Buscar pensión por ID</h4>
+<nav class="navbar bg-body-tertiary bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+        <form class="d-flex" role="search">
+            <input id="id" class="form-control me-2" type="number" placeholder="Search" aria-label="Search">
+            <a onclick="buscarPorId()" class="btn btn-secondary " type="submit">Buscar</a>
+        </form>
+    </div>
+</nav>
+
+<table class="table table-success table-striped-columns">
+    <thead>
+        <tr>
+            <th scope="col">Id Pension</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Valor</th>  
+            <th scope="col">Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Pen_id</td>
+                <td>@item.Pen_nombre</td>
+                <td>@item.Pen_valor</td>
+                <td>
+                    <a asp-action="Edit" asp-route-Pen_id="@item.Pen_id" class="btn btn-outline-primary"><i class="bi bi-pencil-fill"></i></a>
+                </td>
+            </tr>
+        }
+        
+    </tbody>
+</table>
+<a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-primary">Regresar</a>
+
+
+

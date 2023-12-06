@@ -1,0 +1,34 @@
+﻿@model Estudiante
+@{
+    ViewData["Title"] = "Detalles del Estudiante";
+}
+<h1 class="text-light">@ViewData["Title"]</h1>
+<form method="post">
+    <div class="mb-3">
+        <label class="text-light">Nombre</label>
+        <input asp-for="Est_nombre" class="form-control" disabled>
+    </div>
+    <div class="mb-3">
+        <label class="text-light">Cedula</label>
+        <input asp-for="Est_cedula" class="form-control" disabled>
+    </div>
+    <div class="mb-3">
+        <label class="text-light">Direccion</label>
+        <input asp-for="Est_direccion" class="form-control" disabled>
+    </div>
+    <div class="mb-3">
+        <label class="text-light">Estado actividad</label>
+        <input class="form-control" disabled value="@(Model.Est_activo?"Activo":"Inactivo")">
+    </div>
+    <div class="mb-3">
+        <label class="text-light">Pension</label>
+        <input asp-for="Pension" class="form-control" disabled>
+    </div>
+    <div class="row col 6">
+        <div class="col-6 col-md-6">
+            <a asp-action="Index" class="btn btn-primary">Regresar</a>
+        </div>
+    </div>
+</form>
+
+<p>En esta pagina se muestran el detalle del estudiante</p>
