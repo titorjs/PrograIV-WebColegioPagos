@@ -114,5 +114,13 @@ namespace WebColegioPagos.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetearContrasena(int estudianteId)
+        {
+            bool success = await _apiService.resetearContrasenia(estudianteId);
+
+            return Json(new { success = success }); // O false si hay algún error
+        }
     }
 }

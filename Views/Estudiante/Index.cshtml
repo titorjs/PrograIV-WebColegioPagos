@@ -9,8 +9,38 @@
         var cedula = document.getElementById('cedulaInput').value;
         window.location.href = '@Url.Action("BusquedaCedula", "Estudiante")?cedula=' + cedula;
     }
-</script>
 
+    function resetearContrasena(estudianteId) {
+        // Llamada a tu servicio de API
+        $.ajax({
+            type: 'POST', // o 'GET' según la operación que realiza el servicio
+            url: '@Url.Action("ResetearContrasena", "Estudiante")', // Reemplaza con la ruta correcta a tu servicio
+            data: { estudianteId: estudianteId },
+            success: function (response) {
+                // Manejar la respuesta del servicio aquí
+                if (response.success) {
+                    mostrarNotificacion('Contraseña reseteada con éxito', 'success');
+                } else {
+                    mostrarNotificacion('Error al resetear la contraseña', 'error');
+                }
+            },
+            error: function () {
+                mostrarNotificacion('Error de conexión con el servicio', 'error');
+            }
+        });
+    }
+
+    function mostrarNotificacion(mensaje, tipo) {
+        // Puedes usar una librería de notificaciones como 'Toastr', 'SweetAlert', etc.
+        // Aquí un ejemplo con 'Toastr'
+        toastr.options = {
+            "closeButton": true,
+            "positionClass": "toast-top-right",
+            "progressBar": true
+        };
+        toastr[tipo](mensaje);
+    }
+</script>
 
 <h1 class="text-light">@ViewData["Title"]</h1>
 <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Create", "Estudiante")'">Agregar Estudiante</button>
@@ -53,6 +83,9 @@
                     <a type="button" class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Est_id"><i class="bi bi-pencil-fill"></i></a>
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <a type="button" class="btn btn-outline-dark" asp-action="EditPago" asp-route-id="@item.Est_id">Estado</a>
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-outline-dark" onclick="resetearContrasena(@item.Est_id)">Resetear Contraseña</button>
                     </div>
                 </td>
             </tr>

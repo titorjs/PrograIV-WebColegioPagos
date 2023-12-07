@@ -1,10 +1,15 @@
 ﻿using WebColegioPagos.Models.Data;
 using WebColegioPagos.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebColegioPagos.Services
 {
     public interface IApiService
     {
+        /* Servicios Admin */
+
+        public Task<Boolean> loginAdmin(Admin admin);
+
         /* Servicios del estudiante */
         public Task<List<Estudiante>> GetEstudiantes();
         public Task<Estudiante> GetEstudiante(int id);
@@ -14,6 +19,9 @@ namespace WebColegioPagos.Services
         public Task<Estudiante> UpdateEstudiante(int id, ActualizacionEstudiante datos);
         public Task<Estudiante> desactivarEstudiante(int id);
         public Task<Estudiante> activarEstudiante(int id, bool paga);
+        public Task<Boolean> Login(Estudiante estudianteValidar);
+        public Task<Boolean> CambioContrasenia(Estudiante estudianteCambio, String nuevaContrasenia);
+        public Task<Boolean> resetearContrasenia(int id);
 
         /* Global - Cuota*/
         public Task<Global> obtenerCuota();
