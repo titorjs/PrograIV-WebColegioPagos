@@ -28,6 +28,7 @@
             <th scope="col">Cédula</th>
             <th scope="col">Nombre</th>
             <th scope="col">Cuota Estudiante</th>
+            <th scope="col">Valor adeudado</th>
             <th scope="col">Accion</th>
         </tr>
     </thead>
@@ -39,6 +40,7 @@
                 <td>@item.Est_cedula</td>
                 <td>@item.Est_nombre</td>
                 <td>@item.cuotaActual </td>
+                <td>@item.Valorfaltante </td>
                 <td>
                     <a asp-action="Edit" asp-route-Est_id="@item.Est_id" class="btn btn-success">Pagar</a>
                 </td>

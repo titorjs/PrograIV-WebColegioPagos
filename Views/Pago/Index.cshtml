@@ -1,4 +1,7 @@
-﻿@model List<Pago>
+﻿@using WebColegioPagos.Models.Data
+@using WebColegioPagos.Services
+@model List<PagoMostrar>
+@inject IApiService _apiService;
 @{
     ViewData["Title"] = "Lista de Pagos";
 }
@@ -28,7 +31,9 @@
             <th scope="col">Id Pago</th>
             <th scope="col">Cuota</th>
             <th scope="col">Id del Estudiante</th>
-            <th scope="col">Id de la Pensión</th>   
+            <th scope="col">Nombre estudiante</th>
+            <th scope="col">Id de la Pensión</th>  
+            <th scope="col">Valor</th>
         </tr>
     </thead>
     <tbody>
@@ -38,7 +43,9 @@
                 <td>@item.Pag_id</td>
                 <td>@item.Pag_cuota</td>
                 <td>@item.Estudiante</td>
+                <td>@item.Est_nombre</td>
                 <td>@item.Pension</td>
+                <td>@item.Pen_valor</td>
             </tr>
         }        
     </tbody>

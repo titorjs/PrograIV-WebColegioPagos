@@ -5,6 +5,7 @@ using WebColegioPagos.Models.Data;
 using System.Drawing;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
+
 namespace WebColegioPagos.Services
 {
     public class ApiService : IApiService
@@ -297,17 +298,17 @@ namespace WebColegioPagos.Services
             return new List<ImpagoEstudiante>();
         }
 
-        public async Task<List<Pago>> GetPagos()
+        public async Task<List<PagoMostrar>> GetPagos()
         {
             var respuesta = await _httpClient.GetAsync($"Pago");
             if (respuesta.IsSuccessStatusCode)
             {
-                List<Pago> est = JsonConvert.DeserializeObject<List<Pago>>
+                List<PagoMostrar> est = JsonConvert.DeserializeObject<List<PagoMostrar>>
                                 (await respuesta.Content.ReadAsStringAsync());
                 return est;
             }
 
-            return new List<Pago>();
+            return new List<PagoMostrar>();
         }
 
         public async Task<List<Pago>> GetPagosEstudiante(int id)

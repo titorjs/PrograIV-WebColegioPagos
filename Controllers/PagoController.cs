@@ -17,7 +17,7 @@ namespace WebColegioPagos.Controllers
         // GET: PagoController
         public async Task<IActionResult> Index()
         {
-            List<Pago> pagos = await _apiService.GetPagos();
+            List<PagoMostrar> pagos = await _apiService.GetPagos();
             return View(pagos);
         }
         // GET: PagoController

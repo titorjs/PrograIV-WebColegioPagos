@@ -1,6 +1,6 @@
 ﻿using WebColegioPagos.Models.Data;
 using WebColegioPagos.Models;
-using Microsoft.AspNetCore.Mvc;
+
 
 namespace WebColegioPagos.Services
 {
@@ -28,7 +28,7 @@ namespace WebColegioPagos.Services
         public Task<Global> actualizarValor(int valor);
 
         /* Pago */
-        public Task<List<Pago>> GetPagos();
+        public Task<List<PagoMostrar>> GetPagos();
         public Task<List<Pago>> GetPagosEstudiante(int id);
         public Task<List<ImpagoEstudiante>> GetImpagos();
         public Task<Pago> encontrarPago(int id);
